@@ -14,6 +14,7 @@ public class Book {
     private String publish;
     private int year;
     private int cntPage;
+    private int id;
     private final  String ATHOURS_PATTERN = "^([A-Z][a-z]{1,8})(\\s)([A-Z])(\\.)([A-Z])(\\.)$";
     private final  String NAME_PATTERN = "(([A-Z][a-z]{1,10}\\s)|([A-Z][a-z]{1,10})|[0-9]+\\s|[0-9]+){1,5}";
     private final  String PUBLISH_PATTERN = "((\\w+\\s)|(\\w+)){1,5}";
@@ -157,6 +158,11 @@ public class Book {
         return matcher.matches();
     }
 
+    public void setId(int id) {
+        this.id = id;
+    }
+
+
     public static class SortByAuthours implements Comparator<Book> {
 
         @Override
@@ -178,6 +184,13 @@ public class Book {
         System.out.println(this.authours);
         System.out.println(this.name);
         System.out.println(this.cntPage);
+    }
+
+    @Override
+    public String toString() {
+
+        return "name=" + name + "\npublish=" + publish + "\nauthors="
+                + authours + "\nyear=" + year + "cntPage=" + cntPage;
     }
 
 
