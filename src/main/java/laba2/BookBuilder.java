@@ -1,5 +1,6 @@
 package laba2;
 
+import java.time.Year;
 import java.util.ArrayList;
 import java.util.List;
 import laba2.Book;
@@ -11,6 +12,13 @@ public class BookBuilder {
     private int year;
     private int cntPage;
     private Book ob;
+
+    public int getCurrentYear(){
+        java.util.Calendar calendar = java.util.Calendar.getInstance(java.util.TimeZone.getDefault(), java.util.Locale.getDefault());
+        calendar.setTime(new java.util.Date());
+        return calendar.get(java.util.Calendar.YEAR);
+    }
+
     public void setName(String name)throws RuntimeException {
         if(ob.checkName(name))
             this.name = name;
@@ -37,14 +45,14 @@ public class BookBuilder {
 
 
     public BookBuilder setYear(int year) throws RuntimeException {
-        if(year<0)
+        if(year>1950 && year<getCurrentYear() )
             throw new RuntimeException("Negative year is impossible!");
         this.year = year;
         return this;
     }
 
     public BookBuilder setCntPage(int cntPage)throws RuntimeException {
-        if(cntPage<0)
+        if(cntPage<0 && cntPage>3000)
             throw new RuntimeException("Negative count of page is impossible!");
         this.cntPage = cntPage;
         return this;

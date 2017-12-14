@@ -7,6 +7,7 @@ import java.util.List;
 public class Library {
     private String address;
     private String name;
+    private int libraryId;
     private List<Book> books;
 
     public Library() {
@@ -119,5 +120,13 @@ public class Library {
             ob.books.get(i).print();
 
 
+    }
+
+    public int getLibraryId() {
+        return libraryId;
+    }
+
+    public void setLibraryId(int libraryId) {
+        this.libraryId = libraryId;
     }
 }

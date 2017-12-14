@@ -10,11 +10,11 @@ import java.util.regex.*;
 
 public class Book {
     private String name;
-    private List<String> authours = new ArrayList<String>();
+    private List<String> authours;
     private String publish;
     private int year;
     private int cntPage;
-    private int id;
+    private int bookId;
     private final  String ATHOURS_PATTERN = "^([A-Z][a-z]{1,8})(\\s)([A-Z])(\\.)([A-Z])(\\.)$";
     private final  String NAME_PATTERN = "(([A-Z][a-z]{1,10}\\s)|([A-Z][a-z]{1,10})|[0-9]+\\s|[0-9]+){1,5}";
     private final  String PUBLISH_PATTERN = "((\\w+\\s)|(\\w+)){1,5}";
@@ -23,17 +23,17 @@ public class Book {
     public Book() {
         this.setName("");
         this.setPublish("");
-        this.setAthours(null);
+        this.authours = new ArrayList<String>();
         this.setcntPage(0);
         this.setYear(0);
     }
 
-    public Book(ArrayList<String> athours,String name, String publish, int year, int cntPage){
+    public Book(List<String> athours,String name, String publish, int year, int cntPage){
         this.setName(name);
         this.setPublish(publish);
         this.setcntPage(cntPage);
         this.setYear(year);
-        this.setAthours(athours);
+        this.setAthours((ArrayList<String>) athours);
     }
 
     public Book(Book book) {
@@ -158,8 +158,8 @@ public class Book {
         return matcher.matches();
     }
 
-    public void setId(int id) {
-        this.id = id;
+    public void setbookId(int bookId) {
+        this.bookId = bookId;
     }
 
 
@@ -183,6 +183,7 @@ public class Book {
     public void print() {
         System.out.println(this.authours);
         System.out.println(this.name);
+        System.out.println(year);
         System.out.println(this.cntPage);
     }
 
